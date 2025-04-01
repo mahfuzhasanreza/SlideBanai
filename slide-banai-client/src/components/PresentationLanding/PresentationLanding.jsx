@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import HeroBanner from "./HeroBanner";
 import ContentSection from "./ContentSection";
-import './Slide.css';
+import './PresentationLanding.css';
 
 function PresentationLanding() {
   return (
