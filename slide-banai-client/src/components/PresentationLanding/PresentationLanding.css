@@ -8,3 +8,18 @@
 .primary-font {
     font-family: "Roboto", sans-serif;
 }
+
+.subtitle {
+    -webkit-text-stroke-width: 0.76px;
+    -webkit-text-stroke-color: rgba(136, 108, 221, 0.76);
+    font-family: Orbitron;
+    font-size: 37.456px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2.435px;
+    background: linear-gradient(90deg, #886CDD 0%, #A289ED 24.92%, #BCA6FD 49.83%, #A289ED 78.08%, #886CDD 96.62%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
