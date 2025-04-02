@@ -1,7 +1,17 @@
 "use client";
 import React from "react";
+import Lottie from 'react-lottie';
+import animationData from '../../assets/lottie/slide-make-lottie.json';
 
-function ContentSection() {
+const ContentSection=()=> {
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  };
+
+
   return (
     <section className="">
       <div className="flex gap-5">
@@ -17,12 +27,8 @@ function ContentSection() {
             <ActionButtons />
           </div>
         </div>
-        <div className="">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/c31b94cef01f43a1b57944b9708534d9/23fb3a881b4d030a39e0ff6bcb2af01f5ad41249?placeholderIfAbsent=true"
-            alt="Presentation example"
-            className=""
-          />
+        <div>
+          <Lottie options={defaultOptions}/>
         </div>
       </div>
     </section>
