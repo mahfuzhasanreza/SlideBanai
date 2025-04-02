@@ -4,7 +4,7 @@ import Sidebar from "../Shared/Sidebar/Sidebar";
 
 const Root = () => {
     return (
-        <div className="">
+        <div className="!pt-32">
             <div className="flex">
                 <Sidebar></Sidebar>
                 <div>

@@ -3,7 +3,7 @@ import logo from '../../../../public/logo.svg'
 
 const Header = () => {
     return (
-        <header className="!py-3 !px-3 flex gap-5 justify-between w-full">
+        <header className=" z-50 bg-purple-50/50 backdrop-blur-md border-b-1 border-b-purple-300 fixed top-0 inset-x-0 !py-3 !px-8 flex gap-5 justify-between w-full">
             <div className='flex gap-4 cursor-pointer'>
                 <img src={logo} alt="" />
                 <h1 className="text-3xl logo-font">Slide Banai</h1>

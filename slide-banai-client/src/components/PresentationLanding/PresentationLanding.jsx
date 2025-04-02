@@ -4,15 +4,10 @@ import './PresentationLanding.css';
 
 function PresentationLanding() {
   return (
-    <main className="">
-      <div className="">
-        <div className="" />
         <section className="">
           <HeroBanner />
           <ContentSection />
         </section>
-      </div>
-    </main>
   );
 }
 

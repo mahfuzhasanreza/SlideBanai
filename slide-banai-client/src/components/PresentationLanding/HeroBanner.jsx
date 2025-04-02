@@ -9,7 +9,7 @@ function HeroBanner() {
           alt="Presentation background"
           className="object-cover absolute size-full blur-xs"
         />
-        <h2 className="secondary-font font-extrabold relative px-12 rounded-md">
+        <h2 className="secondary-font font-extrabold text-6xl text-white relative px-12 rounded-md">
           Start Your Presentation
         </h2>
       </div>
