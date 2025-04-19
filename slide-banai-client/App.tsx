@@ -1,3 +1,5 @@
+import { Toaster } from "@/components/ui/toaster";
+
 function Router() {
   return (
     <Switch>
@@ -11,6 +13,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Router />
+        <Toaster />
       </AuthProvider>
     </QueryClientProvider>
   );
