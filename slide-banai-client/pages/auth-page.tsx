@@ -11,7 +11,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Logo } from "@/components/logo";
+import { Loader2, Mail, Lock } from "lucide-react";
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
+import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/use-auth";
 
 // Authentication methods
 const METHODS = {
@@ -25,7 +32,97 @@ const STAGES = {
   REGISTER: "register",
 } as const;
 
+// Email + Password Login schema
+const emailLoginSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters" }),
+});
 
+// Registration schema
+const registerSchema = z
+  .object({
+    username: z
+      .string()
+      .min(3, { message: "Username must be at least 3 characters" }),
+    name: z.string().min(2, { message: "Name must be at least 2 characters" }),
+    email: z.string().email({ message: "Please enter a valid email address" }),
+    password: z
+      .string()
+      .min(6, { message: "Password must be at least 6 characters" }),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
+
+type EmailLoginValues = z.infer<typeof emailLoginSchema>;
+type RegisterValues = z.infer<typeof registerSchema>;
+
+export default function AuthPage() {
+  // Auth state
+  const [authMethod, setAuthMethod] = useState<string>(METHODS.EMAIL_PASSWORD);
+  const [authStage, setAuthStage] = useState<string>(STAGES.SELECT_METHOD);
+
+  const {
+    user,
+    loginMutation,
+    registerMutation,
+    googleSignInMutation,
+  } = useAuth();
+
+  const [, navigate] = useLocation();
+  const { toast } = useToast();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+
+  // Email + Password login form
+  const emailLoginForm = useForm<EmailLoginValues>({
+    resolver: zodResolver(emailLoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  // Registration form
+  const registerForm = useForm<RegisterValues>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      username: "",
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  // Handle email + password login
+  const onEmailLoginSubmit = async (data: EmailLoginValues) => {
+    loginMutation.mutate({
+      email: data.email,
+      password: data.password,
+    });
+  };
+
+  // Handle registration
+  const onRegisterSubmit = (data: RegisterValues) => {
+    // Remove confirmPassword as it's not needed for the API
+    const { confirmPassword, ...registerData } = data;
+    registerMutation.mutate(registerData);
+  };
+
+  // Handle back navigation
+  const handleBack = () => {
+    setAuthStage(STAGES.SELECT_METHOD);
+  };
 
   // Renders the appropriate authentication UI based on stage and method
   const renderAuthContent = () => {
