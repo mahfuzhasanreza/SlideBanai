@@ -4,7 +4,7 @@ SlideBanai is designed to help you create, manage, and improve your presentation
 
 <br>
 
-Live Site: [https://slidebanai-d4210.web.app](https://slidebanai-d4210.web.app)
+**Live Site:** [https://slidebanai-d4210.web.app](https://slidebanai-d4210.web.app)
 
 ## Key Features
 
@@ -36,3 +36,12 @@ Live Site: [https://slidebanai-d4210.web.app](https://slidebanai-d4210.web.app)
 4.  Explore the available templates or upload your own content.
 5.  Utilize the "Presentation Coach" and "Start Practice" features to refine your delivery.
 6.  Track your progress and performance using the "Performance Metrics" dashboard.
+
+
+## Team Members
+
+* **Mahfuz Hasan Reza**
+* **Zobaer Ibn Razzaque**
+* **Sadman Adib**
+* **Robiul Awoul Robin**
+* **Maisha Maliha Neha**
