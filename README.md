@@ -24,7 +24,7 @@ SlideBanai is designed to help you create, manage, and improve your presentation
     * Upgrade to a Pro subscription for advanced features.
     * Access settings.
     * Sign out.
-* **Potential Additional Features (based on sidebar):**
+* **Additional Features:**
     * OCR (Optical Character Recognition) functionality.
     * API access for developers.
 
