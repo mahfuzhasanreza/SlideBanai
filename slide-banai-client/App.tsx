@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import AuthPage from "@/pages/auth-page";
 import DashboardPage from "@/pages/dashboard-page";
+import EditorPage from "@/pages/editor-page";
 import CoachPage from "@/pages/coach-page";
 import ApiTestPage from "@/pages/api-test-page";
 import CanvaPage from "@/pages/canva-page";
@@ -20,6 +21,7 @@ function Router() {
       <ProtectedRoute path="/canva" component={CanvaPage} />
       <ProtectedRoute path="/api-test" component={ApiTestPage} />
       <ProtectedRoute path="/coach" component={CoachPage} />
+      <ProtectedRoute path="/editor/:id" component={EditorPage} />
       <Route component={NotFound} />
     </Switch>
   );
