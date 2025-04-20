@@ -9,6 +9,7 @@ import EditorPage from "@/pages/editor-page";
 import CoachPage from "@/pages/coach-page";
 import ApiTestPage from "@/pages/api-test-page";
 import CanvaPage from "@/pages/canva-page";
+import OcrTestPage from "@/pages/ocr-test-page";
 import { ProtectedRoute } from "./lib/protected-route";
 import { AuthProvider } from "./hooks/use-auth";
 
@@ -22,6 +23,7 @@ function Router() {
       <ProtectedRoute path="/api-test" component={ApiTestPage} />
       <ProtectedRoute path="/coach" component={CoachPage} />
       <ProtectedRoute path="/editor/:id" component={EditorPage} />
+      <ProtectedRoute path="/ocr-test" component={OcrTestPage} />
       <Route component={NotFound} />
     </Switch>
   );
