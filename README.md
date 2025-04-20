@@ -1,8 +1,10 @@
 # Slidebanai
 
-[Link to live site: https://slidebanai-d4210.web.app](https://slidebanai-d4210.web.app)
-
 SlideBanai is designed to help you create, manage, and improve your presentations.
+
+<br>
+
+Live Site: [https://slidebanai-d4210.web.app](https://slidebanai-d4210.web.app)
 
 ## Key Features
 
