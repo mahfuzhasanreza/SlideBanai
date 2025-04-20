@@ -23,6 +23,11 @@ import {
 } from "@/components/ui/tabs";
 
 export default function PresentationsPage() {
+  const { user } = useAuth();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortBy, setSortBy] = useState("updated");
+  const [createModalOpen, setCreateModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("all");
 
   // Fetch presentations
   const {
@@ -47,9 +52,96 @@ export default function PresentationsPage() {
     queryKey: ["/api/templates"],
   });
 
+  // Filter and sort presentations
+  const filterAndSortPresentations = (items: PresentationWithMeta[]) => {
+    // First filter by search term
+    let filtered = items;
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      filtered = items.filter((p) =>
+        p.title.toLowerCase().includes(term)
+      );
+    }
 
- 
+    // Then sort
+    return [...filtered].sort((a, b) => {
+      if (sortBy === "updated") {
+        const dateA = a.updated_at ? new Date(a.updated_at).getTime() : 0;
+        const dateB = b.updated_at ? new Date(b.updated_at).getTime() : 0;
+        return dateB - dateA;
+      } else if (sortBy === "created") {
+        const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+        const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+        return dateB - dateA;
+      } else if (sortBy === "title") {
+        return a.title.localeCompare(b.title);
+      } else {
+        return 0;
+      }
+    });
+  };
+
+  const filteredPresentations = filterAndSortPresentations(presentations);
+  const filteredSharedPresentations = filterAndSortPresentations(sharedPresentations);
+
+  // Get active presentations based on tab
+  const activePresentations = activeTab === "all" 
+    ? filteredPresentations 
+    : activeTab === "shared" 
+      ? filteredSharedPresentations 
+      : [];
+
+  const isLoading = 
+    (activeTab === "all" && presentationsLoading) || 
+    (activeTab === "shared" && sharedLoading);
   
+  const hasError = 
+    (activeTab === "all" && presentationsError) ||
+    (activeTab === "shared" && sharedError);
+
+  // Function to render presentations grid
+  const renderPresentationsGrid = () => {
+    if (isLoading) {
+      return (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="h-8 w-8 animate-spin text-primary-500" />
+        </div>
+      );
+    }
+
+    if (hasError) {
+      return (
+        <div className="bg-red-50 p-4 rounded-md text-center">
+          <p className="text-red-500">Failed to load presentations. Please try again.</p>
+          <Button variant="outline" className="mt-4" onClick={() => window.location.reload()}>
+            Reload
+          </Button>
+        </div>
+      );
+    }
+
+    if (activePresentations.length === 0) {
+      return (
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
+          <h3 className="text-gray-500 font-medium">No presentations found</h3>
+          {activeTab === "all" ? (
+            <>
+              <p className="mt-1 text-gray-400 text-sm">
+                Create your first presentation to get started
+              </p>
+              <Button className="mt-4" onClick={() => setCreateModalOpen(true)}>
+                <Plus className="h-4 w-4 mr-2" />
+                Create Presentation
+              </Button>
+            </>
+          ) : (
+            <p className="mt-1 text-gray-400 text-sm">
+              No one has shared any presentations with you yet
+            </p>
+          )}
+        </div>
+      );
+    }
 
     return (
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

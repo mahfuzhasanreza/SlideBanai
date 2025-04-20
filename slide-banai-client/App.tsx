@@ -8,6 +8,7 @@ import DashboardPage from "@/pages/dashboard-page";
 import PresentationsPage from "@/pages/presentations-page";
 import EditorPage from "@/pages/editor-page";
 import CoachPage from "@/pages/coach-page";
+import SubscriptionPage from "@/pages/subscription-page";
 import ApiTestPage from "@/pages/api-test-page";
 import OcrTestPage from "@/pages/ocr-test-page";
 import CanvaPage from "@/pages/canva-page";
@@ -24,6 +25,7 @@ function Router() {
       <ProtectedRoute path="/editor/:id" component={EditorPage} />
       <ProtectedRoute path="/editor" component={EditorPage} />
       <ProtectedRoute path="/coach" component={CoachPage} />
+      <ProtectedRoute path="/subscription" component={SubscriptionPage} />
       <ProtectedRoute path="/canva" component={CanvaPage} />
       <ProtectedRoute path="/api-test" component={ApiTestPage} />
       <ProtectedRoute path="/ocr-test" component={OcrTestPage} />
