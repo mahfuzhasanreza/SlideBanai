@@ -242,7 +242,7 @@ SlideBanai was built by **Team CurlZero**, a team of five:
 
 | Member | Role |
 | --- | --- |
-| [**Mahfuz Hasan Reza**](https://github.com/mahfuzhasanreza) | Frontend: set up the React + TypeScript client and built its pages (landing, sign-in, dashboard, presentations, slide editor, coach, OCR upload, Canva, subscription) |
+| [**Mahfuz Hasan Reza**](https://github.com/mahfuzhasanreza) | Frontend: set up the React + TypeScript client and built its pages |
 | **Robiul Awoul Robin** | Team member |
 | **Zobaer Ibn Razzaque** | Team member |
 | **Sadman Adib** | Team member |
