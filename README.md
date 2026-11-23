@@ -238,7 +238,7 @@ All endpoints are served under `/api`. Most require a signed-in session.
 
 ## Team
 
-SlideBanai was built by a team of five:
+SlideBanai was built by **Team CurlZero**, a team of five:
 
 | Member | Role |
 | --- | --- |
